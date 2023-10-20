@@ -3,7 +3,9 @@
 - [Redux Course](#redux-course)
     - [Functional Programming](#functional-programming)
         - [Functions as First-class Citizens](#functions-as-first-class-citizens)
-        - [Higher-Order Functions](#higher-order-functions)
+        - [Higher-Order Functions - takes functions as an argument](#higher-order-functions---takes-functions-as-an-argument)
+        - [Functional Composition](#functional-composition)
+        - [Composing and Piping](#composing-and-piping)
 
 <!-- /TOC -->
 
@@ -83,3 +85,43 @@ console.log(result);
 problems
   - we have to read from right to left
   - so many parentheses )))))));
+
+### Composing and Piping
+
+Use lodash to simplify the code from the last sample
+
+https://lodash.com/
+
+```
+npm install lodash
+```
+
+#### compose
+
+```js
+import { compose, pipe } from 'lodash/fp'
+// compose - Higher Order Function
+
+let input = "    JavaScript   ";
+const trim = str => str.trim();
+const wrapInDiv = str => `<div>${str}</div>`
+const toLowerCase = str => str.toLowerCase();
+
+const transform = compose(wrapInDiv, toLowerCase, trim);
+
+const result = transform(input);
+console.log(result);
+```
+
+problem
+  - we still have to read from right to left
+
+#### pipe
+
+```js
+//const transform = compose(wrapInDiv, toLowerCase, trim);
+const transform = pipe(trim, toLowerCase, wrapInDiv);
+
+const result = transform(input);
+console.log(result);
+```
