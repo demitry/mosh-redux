@@ -68,3 +68,18 @@ numbers.map(number => number * 2);
 
 setTimeout(() => console.log("Hello after 3 s"), 3000);
 ```
+
+### Functional Composition
+
+```js
+let input = "    JavaScript   ";
+const trim = str => str.trim();
+const wrapInDiv = str => `<div>${str}</div>`
+const toLowerCase = str => str.toLowerCase();
+const result = wrapInDiv(toLowerCase(trim(input)));
+console.log(result);
+```
+
+problems
+  - we have to read from right to left
+  - so many parentheses )))))));
