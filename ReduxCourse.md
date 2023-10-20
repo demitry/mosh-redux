@@ -151,3 +151,48 @@ const transform1 = pipe(trim, toLowerCase, wrap1("div")); // we CAN pass "div"
 const result1 = transform1(input);
 console.log(result1);
 ```
+
+### Pure Functions
+
+#### Pure Functions
+
+- No random values
+- No current date/time
+- No global state (DOM, files, DB, etc.)
+- No param mutation
+- No side effects
+- Immutability
+
+In Redux - Reducers can be impure
+
+#### Benefits
+
+- Self documenting
+- Easy to test
+- Cacheable
+- Concurrency
+
+### Immutability
+
+Change the copy, Original param is not changed
+
+const just prevents reassignment
+
+#### Pros
+
+- More predictable
+- Faster Change Detection
+  - 2 obj comparison by ref is quick
+  - comparing mutable objects is harder
+```
+if(obj1 === obj2) {...}
+```
+- Concurrency
+
+#### Cons
+
+- Performance Cost (copy objects)
+- Memory Overhead
+  - Library for structural sharing
+
+### Updating objects
