@@ -1,3 +1,5 @@
+<!-- TOC -->
+
 - [Redux Course](#redux-course)
     - [Functional Programming](#functional-programming)
         - [Functions as First-class Citizens](#functions-as-first-class-citizens)
@@ -58,5 +60,11 @@ let message = fn2();
 
 ```
 
-### Higher-Order Functions<!-- TOC -->
+### Higher-Order Functions - takes functions as an argument
 
+```js
+let numbers = [1, 3, 4, 5, 6];
+numbers.map(number => number * 2);
+
+setTimeout(() => console.log("Hello after 3 s"), 3000);
+```
