@@ -87,3 +87,68 @@ https://dev.to/ruppysuppy/redux-vs-context-api-when-to-use-them-4k3p#what-is-the
 ## Redux Starter
 
 https://programmingwithmosh.com/redux-starter/
+
+```
+npm i
+npm start
+```
+
+## Starter Code
+
+package.json
+
+Webpack - module bundler for Js
+
+Multiple files - combined
+
+package.json
+
+```json
+  "devDependencies": {
+    "webpack": "4.41.6",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.3"
+  }
+```
+
+webpack.config.js
+
+```js
+const path = require("path");
+
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "app.js",
+    path: path.resolve(__dirname, "dist")
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    port: 9000
+  },
+  mode: "development"
+};
+```
+
+## Course Plan
+
+- Redux is based on the functional programming
+    - curring ...
+- Fundamentals of Redux
+  - reducers ...
+- Implement from scratch (how everything works)
+- Debugging
+- Redux - too much code?
+- Redux code is ugly and unmaintainable?
+- Writing clean code techniques
+
+- Redux Store
+- Middleware
+- Calling APIs, avoid repetitions
+  - Loading indicators, caching
+- Testing Redux apps
+  - good tests, not just tests
+  - proper way
+- Integration with React
+
+
