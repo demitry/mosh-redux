@@ -6,8 +6,23 @@
         - [Higher-Order Functions - takes functions as an argument](#higher-order-functions---takes-functions-as-an-argument)
         - [Functional Composition](#functional-composition)
         - [Composing and Piping](#composing-and-piping)
+            - [compose](#compose)
+            - [pipe](#pipe)
+        - [Currying](#currying)
+        - [Pure Functions](#pure-functions)
+            - [Pure Functions](#pure-functions)
+            - [Benefits](#benefits)
+        - [Immutability](#immutability)
+            - [Pros](#pros)
+            - [Cons](#cons)
+        - [Updating objects: Shallow and Deep Copy](#updating-objects-shallow-and-deep-copy)
+        - [Updating Arrays](#updating-arrays)
+        - [Enforcing Immutability](#enforcing-immutability)
+            - [Immutable JS](#immutable-js)
+            - [Immer](#immer)
 
 <!-- /TOC -->
+
 
 # Redux Course
 
@@ -260,3 +275,74 @@ const rem1 = numbers.filter(n => n !== 2);
 // Updating
 const upd1 = numbers.map(n => n === 2 ? 20 : n);
 ```
+
+### Enforcing Immutability
+
+JS - mutability
+
+Libs to enforce immutability:
+- Immutable.js (Facebook)
+  - Immutable data structures (map, list)
+  - But there are problems
+- Immer
+- Mori
+
+This is mutable object
+
+```js
+
+let book = { title: "Harry Potter" };
+
+function publish(book) {
+    book.isPublished = true;
+}
+
+publish(book);
+
+console.log(book);
+```
+
+```
+npm i immutable
+```
+
+
+#### Immutable JS
+
+```js
+
+// Enforcing Immutability
+
+// This is mutable object
+let book = { title: "Harry Potter" };
+
+function publish(book) {
+    book.isPublished = true;
+}
+
+publish(book);
+
+console.log(book);
+
+//import { Map } from 'immutable'
+let book2 = Map({ title: "Harry Potter" });
+console.log(book2);
+console.log(book2.get("title")); // PROBLEM
+
+// PROBLEM: hard to integrate with libraries which expect POJO
+console.log(book2.toJS()); //POJO =(
+
+function publishImmutable(bookParam) {
+    return bookParam.set("isPublished", true);
+}
+
+let publishedBook = publishImmutable(book2).toJS();
+console.log("published immutable:");
+console.log(publishedBook);
+```
+
+And once you started you have to use these getters and setters everywhere in code.
+
+That is why Mosh prefer Immer
+
+#### Immer

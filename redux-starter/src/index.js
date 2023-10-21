@@ -1,4 +1,5 @@
 import { compose, pipe } from 'lodash/fp'
+import { Map } from 'immutable'
 // compose - Higher Order Function
 
 let input = "    JavaScript   ";
@@ -90,3 +91,38 @@ const rem1 = numbers.filter(n => n !== 2);
 
 // Updating
 const upd1 = numbers.map(n => n === 2 ? 20 : n);
+
+
+// Enforcing Immutability
+
+// This is mutable object
+let book = { title: "Harry Potter" };
+
+function publish(book) {
+    book.isPublished = true;
+}
+
+publish(book);
+
+console.log(book);
+
+//import { Map } from 'immutable'
+let book2 = Map({ title: "Harry Potter" });
+console.log(book2);
+console.log(book2.get("title")); // PROBLEM
+
+// PROBLEM: hard to integrate with libraries which expect POJO
+console.log(book2.toJS()); //POJO =(
+
+function publishImmutable(bookParam) {
+    return bookParam.set("isPublished", true);
+}
+
+let publishedBook = publishImmutable(book2).toJS();
+console.log("published immutable:");
+console.log(publishedBook);
+
+// And once you started you have to use these getters and setters everywhere in code.
+// FFFF
+
+//That is why Mosh prefer Immer
