@@ -69,3 +69,24 @@ const updatedDeep = {
     },
     name: "Peter"
 }
+
+// Updating arrays
+
+const numbers = [1, 2, 3];
+
+// Adding
+const arr1 = [...numbers, 4];
+const arr2 = [4, ...numbers];
+
+const index = numbers.indexOf(2);
+const arr3 = [
+    ...numbers.slice(0, index),
+    4,
+    ...numbers.slice(index)
+];
+
+// Removing
+const rem1 = numbers.filter(n => n !== 2);
+
+// Updating
+const upd1 = numbers.map(n => n === 2 ? 20 : n);
