@@ -428,7 +428,7 @@ Action (Event) ---dispatch--> Store --call---> Reducer (Event Handler)
 - we can log any action
 - can do Undo/Redo
 
-### First Redux App
+### First Redux App Plan
 - Design the store
 - Define the actions
 - Create a reducer
@@ -437,3 +437,90 @@ Action (Event) ---dispatch--> Store --call---> Reducer (Event Handler)
 ```
 npm i redux@4.0
 ```
+
+### First App
+
+#### Design the store
+
+For now, simple structure:
+
+```js
+[
+  {
+    id: 1,
+    description:"",
+    resolved: false
+  },
+  {},
+  {}
+]
+```
+
+later - 2 slices, 2 reducers:
+
+```js
+{
+  bugs: [
+  {
+    id: 1,
+    description:"",
+    resolved: false
+  },
+  {},
+  {}
+],
+currentUser: {}
+}
+
+```
+
+#### Define the actions
+
+- Add a Bug
+- Mark as Resolved
+- Delete a Bug
+- Filter, Sort, etc.
+
+Action - is a plain JS object, POJO, which describes what is happen
+
+```js
+{
+  type: "bugAdded",
+  description: "..."
+}
+```
+
+Redux is built on this principle:
+
+We should be able to store the state of the app on the disk and reload from it later
+
+Action History with descriptions - fine.
+
+Redux is inspired by Flux
+
+in Flux:
+
+```js
+{
+  type: "bugAdded",
+  payload: {
+    description: "..."
+  }
+}
+```
+
+And this structure is fine, in Moshes opinion.
+
+Payload - object that contains all data about action
+
+```js
+{
+  type: "bugRemoved",
+  payload: {
+    id: 1
+  }
+}
+```
+
+#### Create a reducer
+#### Set uu the store
