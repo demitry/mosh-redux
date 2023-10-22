@@ -368,3 +368,62 @@ let updated = publish(book);
 console.log(book);
 console.log(updated);
 ```
+
+### Redux Architecture
+
+Single JS object - Store
+
+for example
+
+```json
+{
+  categories: [],
+  products: [],
+  cart: {},
+  user: {}
+}
+```
+
+- We cannot mutate the store (state)
+- Redux - is built on top of functional principles
+- Store - immutable
+
+```js
+function reducer(store, action){
+  // return updated store
+  const updated = { ...store };
+}
+```
+
+How to know, what to update? action
+
+Store can have many slices
+
+```json
+{
+  categories: [],
+  products: [],
+  cart: {},
+  user: {}
+}
+```
+
+Each reducer will be responsible for updating part of the store (categories, products, ...)
+
+#### Building blocks of an Redux App
+- Action (Event)
+- Store
+- Reducer (Event Handler)
+
+Reducer - pure funcs
+
+
+```
+Action (Event) ---dispatch--> Store --call---> Reducer (Event Handler)
+                                    < - - - -     
+```
+
+- dispatch - entry point to the store
+- dispatching actions - send actions to the entry point
+- we can log any action
+- can do Undo/Redo
