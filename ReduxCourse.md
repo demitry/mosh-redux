@@ -427,3 +427,13 @@ Action (Event) ---dispatch--> Store --call---> Reducer (Event Handler)
 - dispatching actions - send actions to the entry point
 - we can log any action
 - can do Undo/Redo
+
+### First Redux App
+- Design the store
+- Define the actions
+- Create a reducer
+- Set uu the store
+
+```
+npm i redux@4.0
+```
