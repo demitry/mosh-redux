@@ -346,3 +346,25 @@ And once you started you have to use these getters and setters everywhere in cod
 That is why Mosh prefer Immer
 
 #### Immer
+
+```
+npm i immer
+```
+
+```js
+import { produce } from 'immer'
+
+let book = { title: "Harry Potter" };
+
+function publish(book) {
+    return produce(book, draftBook => {
+        // Mutations/changes to initial object
+        draftBook.isPublished = true;
+    });
+}
+
+let updated = publish(book);
+
+console.log(book);
+console.log(updated);
+```
