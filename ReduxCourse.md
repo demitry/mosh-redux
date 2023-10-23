@@ -745,5 +745,16 @@ unsubscribeFunc(); // We will not be notified any more
 store.dispatch(bugRemoved(1));
 ```
 
-### Exercise
-### Solution
+### Exercise and Solution
+
+Bug Resolved
+
+Think about Actions first 
+
+Than about the reducer
+
+Check the code, 
+
+This is traditional way, seems complex? Check the full course from Mosh.
+
+
