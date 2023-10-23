@@ -560,3 +560,68 @@ const store = createStore(reducer);
 
 export default store;
 ```
+
+### Dispatching Actions
+
+```
+{dispatch: ƒ, subscribe: ƒ, getState: ƒ, replaceReducer: ƒ, Symbol(observable): ƒ}
+dispatch : ƒ dispatch(action)
+getState : ƒ getState()
+replaceReducer : ƒ replaceReducer(nextReducer)
+subscribe : ƒ subscribe(listener)
+Symbol(observable) : ƒ observable()
+[[Prototype]] : Object
+```
+
+Store:
+
+- dispatch
+- getState
+- replaceReducer
+- subscribe
+
+We have getState but we haven't setState method.
+
+Only getState()
+
+To change the state of the store we have to dispath an action.
+
+In real app: Press button -> Dispatch an action
+
+```
+[
+    {
+        "id": 1,
+        "description": "Bug1",
+        "resolved": false
+    }
+]
+```
+
+```js
+import store from "./store";
+
+console.log("our store:");
+console.log(store);
+
+store.dispatch({
+    type: "bugAdded",
+    payload: {
+        description: "Bug1"
+    }
+})
+
+console.log("our store state:");
+console.log(store.getState());
+
+store.dispatch({
+    type: "bugRemoved",
+    payload: {
+        id: 1
+    }
+})
+
+console.log("our store state:");
+console.log(store.getState());
+
+```
