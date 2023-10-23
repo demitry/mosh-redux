@@ -653,6 +653,46 @@ store.dispatch({
 ```
 
 ### Action Types
+
+3 blocks: actions, reducers, store
+
+- We dispatch an action
+- Store is going to call our reducer,
+- Store is going to give it the current state and the action
+- Based on the type of action we'll get a new state
+
+Redux - small API: get state, dispatch, notify:
+
+```
+Dispatch method:
+
+// state = reducer(state, action)
+// notify the subscribers
+```
+
+Hardcoded strings "bugAdded", "bugRemoved", ...
+
+```js
+export const BUG_ADDED = "bugAdded";
+export const BUG_REMOVED = "bugRemoved";
+```
+
+```js
+import * as actions from './actionTypes'
+//import { BUG_ADDED, BUG_REMOVED } from './actionTypes' 
+...
+
+export default function reducer(state = [], action) {
+    switch (action.type) {
+        case actions.BUG_ADDED:
+            return [...
+            ];
+        case actions.BUG_REMOVED:
+        ...
+    }
+}
+```
+
 ### Action Creators
 ### Exercise
 ### Solution
