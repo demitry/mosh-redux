@@ -694,5 +694,56 @@ export default function reducer(state = [], action) {
 ```
 
 ### Action Creators
+
+How we dispatch an action?
+- Should we repeat? No!
+
+actions.js or actionsCreators.js 
+
+```js
+import * as actions from './actionTypes'
+
+// export function bugAdded(description) {
+//     return {
+//         type: actions.BUG_ADDED,
+//         payload: {
+//             description: description
+//         }
+//     };
+// }
+
+export const bugAdded = description => ({
+    type: actions.BUG_ADDED,
+    payload: {
+        description: description
+    }
+});
+
+export function bugRemoved(id) {
+    return {
+        type: actions.BUG_REMOVED,
+        payload: {
+            id: id
+        }
+    };
+}
+
+```
+index
+```js
+import store from "./store";
+import { bugAdded, bugRemoved } from "./actions";
+
+const unsubscribeFunc = store.subscribe(() => {
+    console.log("Store changed!", store.getState()); // Refresh the UI
+});
+
+store.dispatch(bugAdded("Bug 1"));
+
+unsubscribeFunc(); // We will not be notified any more
+
+store.dispatch(bugRemoved(1));
+```
+
 ### Exercise
 ### Solution
