@@ -1,24 +1,21 @@
 import store from "./store";
 
-console.log("our store:");
-console.log(store);
+const unsubscribeFunc = store.subscribe(() => {
+    console.log("Store changed!", store.getState()); // Refresh the UI
+});
 
 store.dispatch({
     type: "bugAdded",
     payload: {
         description: "Bug1"
     }
-})
+});
 
-console.log("our store state:");
-console.log(store.getState());
+unsubscribeFunc(); // We will not be notified any more
 
 store.dispatch({
     type: "bugRemoved",
     payload: {
         id: 1
     }
-})
-
-console.log("our store state:");
-console.log(store.getState());
+});
